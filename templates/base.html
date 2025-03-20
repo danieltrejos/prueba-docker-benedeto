@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba benendeto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+
+<body>
+    <h1 class="text-3xl">Prueba de benendeto</h1>
+    <p class="mt-3 text-xl">Este es un ejemplo debenendeto.</p>
+    <p>La fecha de creación de este documento es: <span id="date"></span></p>
+    <script>
+        document.getElementById("date").innerHTML = Date();
+    </script>
+
+    {% block contenido %}
+
+    {% endblock %}
+</body>
+
+</html>
