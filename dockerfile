@@ -40,7 +40,10 @@ EXPOSE 5001
 
 # Comando para ejecutar la aplicación Flask
 # Asegúrate de que 'app.py' sea el punto de entrada correcto de tu aplicación
-CMD ["python", "app.py"] 
+# CMD ["python", "app.py"] 
+CMD ["gunicorn", "--bind", "0.0.0.0:5001", "wsgi:app"]  
+
+# Ejecuta Gunicorn
 
 # docker build -t benedetto-img .
 # Usa powershell
