@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -14,6 +14,10 @@ def hello():
 @app.route('/volumen')
 def volumen():
     return 'Prueba de actualizar automatique'
+
+@app.route('/health')
+def health_check():
+    return jsonify({"status": "ok"}), 200
 
 print(app.url_map)
 
