@@ -14,9 +14,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Instala Node.js y npm (necesarios para Tailwind CSS)
 # RUN apt-get update && apt-get install -y --no-install-recommends \
 #    nodejs npm
+RUN apk add --no-cache nodejs npm
+
+# Copia package.json y tailwind.config.js
+#COPY package.json tailwind.config.js ./
+COPY package.json ./
 
 # Instala las dependencias de JavaScript (Tailwind CSS, etc.)
-# RUN npm install
+RUN npm install
 
 # Copia el resto del código fuente
 COPY . .
@@ -24,6 +29,11 @@ COPY . .
 # Ejecuta el comando de construcción de Tailwind (esto generará los archivos CSS estáticos)
 # Reemplaza 'tailwind' por el comando correcto si es diferente
 # RUN npm run build  # Asume que tienes un script 'build' en tu package.json que ejecuta Tailwind
+
+# Construye los archivos CSS de Tailwind (si es necesario)
+#RUN npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minify
+
+
 
 # Expon la puerto de la aplicación Flask
 EXPOSE 5001
